@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class LibroConciliacionBancariaWizard(models.TransientModel):
-    _name = 'account_gt.libro_conciliacion_bancaria.wizard'
+    _name = 'account_mx.libro_conciliacion_bancaria.wizard'
     _description = "Wizard para libro conciliacion bancaria"
 
     fecha_inicio = fields.Date('Fecha inicio')
@@ -14,7 +14,7 @@ class LibroConciliacionBancariaWizard(models.TransientModel):
     def print_report(self):
         data = {
              'ids': [],
-             'model': 'account_gt.libro_conciliacion_bancaria.wizard',
+             'model': 'account_mx.libro_conciliacion_bancaria.wizard',
              'form': self.read()[0]
         }
-        return self.env.ref('account_gt.action_libro_conciliacion_bancaria').report_action([], data=data)
+        return self.env.ref('account_mx.action_libro_conciliacion_bancaria').report_action([], data=data)

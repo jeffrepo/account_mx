@@ -4,7 +4,7 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError, except_orm
 
 class ConciliacionBancariaWizard(models.TransientModel):
-    _name = 'account_gt.conciliacion_bancaria.wizard'
+    _name = 'account_mx.conciliacion_bancaria.wizard'
     _description = "Wizard para conciliar con banco"
 
     fecha = fields.Date('Fecha de conciliación')

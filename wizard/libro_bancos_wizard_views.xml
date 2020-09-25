@@ -3,8 +3,8 @@
     <data>
 
         <record model="ir.ui.view" id="account_gt_libro_bancos_form_view">
-            <field name="name">account_gt.libro_bancos.wizard</field>
-            <field name="model">account_gt.libro_bancos.wizard</field>
+            <field name="name">account_mx.libro_bancos.wizard</field>
+            <field name="model">account_mx.libro_bancos.wizard</field>
             <field name="arch" type="xml">
                 <form string="Libro de bancos">
                     <group>
@@ -24,7 +24,7 @@
         <act_window id="launch_account_gt_libro_bancos"
                     name="Libro de bancos"
                     binding_model="account.account"
-                    res_model="account_gt.libro_bancos.wizard"
+                    res_model="account_mx.libro_bancos.wizard"
                     view_mode="form"
                     target="new"/>
 

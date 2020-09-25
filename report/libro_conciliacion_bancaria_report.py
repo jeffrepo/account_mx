@@ -5,7 +5,7 @@ from odoo.exceptions import UserError
 import logging
 
 class LibroConciliacionBancaria(models.AbstractModel):
-    _name = 'report.account_gt.reporte_libro_conciliacion_bancaria'
+    _name = 'report.account_mx.reporte_libro_conciliacion_bancaria'
 
 
     def saldo_inicial(self, datos):

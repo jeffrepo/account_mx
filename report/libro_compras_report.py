@@ -5,7 +5,7 @@ from odoo.exceptions import UserError
 import logging
 
 class LibroCompras(models.AbstractModel):
-    _name = 'report.account_gt.reporte_libro_compras'
+    _name = 'report.account_mx.reporte_libro_compras'
 
 
     # def _get_iva(self,preccio,moneda,cantidad, productotax_ids):

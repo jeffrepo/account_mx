@@ -3,18 +3,18 @@
     <data>
 
         <report id="action_libro_bancos"
-            model="account_gt.libro_bancos.wizard"
+            model="account_mx.libro_bancos.wizard"
             string="Libro de bancos"
             report_type="qweb-pdf"
-            name="account_gt.reporte_libro_bancos"
-            file="account_gt.reporte_libro_banos"/>
+            name="account_mx.reporte_libro_bancos"
+            file="account_mx.reporte_libro_banos"/>
 
         <report id="action_libro_conciliacion_bancaria"
-            model="account_gt.libro_conciliacion_bancaria.wizard"
+            model="account_mx.libro_conciliacion_bancaria.wizard"
             string="Libro conciliacion bancaria"
             report_type="qweb-pdf"
-            name="account_gt.reporte_libro_conciliacion_bancaria"
-            file="account_gt.reporte_libro_conciliacion_bancaria"/>
+            name="account_mx.reporte_libro_conciliacion_bancaria"
+            file="account_mx.reporte_libro_conciliacion_bancaria"/>
 
     </data>
 </odoo>
