@@ -55,12 +55,16 @@ class Liquidacion(models.Model):
                     for l in linea.factura_id.line_ids:
                         if l.account_id.reconcile:
                             if not l.reconciled:
-                                total += l.credit - l.debit
-                                lineas.append(l)
-                                logging.warn(l.credit - l.debit)
+                                if l.credit > 0:
+                                    total += l.credit - l.debit
+                                    logging.warn(not l.reconciled)
+                                    lineas.append(l)
+                                    logging.warn(l.account_id.name)
+                                    logging.warn(l.credit - l.debit)
                             else:
                                 raise UserError('La factura %s ya esta conciliada' % (linea.factura_id.name))
             logging.warn('PASA FACTURA')
+            logging.warn(total)
             logging.warn(lineas)
 
             if dato.pago_ids:
@@ -88,8 +92,10 @@ class Liquidacion(models.Model):
             lineas_conciliares = []
             nuevas_lineas = []
             for linea in lineas:
+                logging.warn('1')
                 nuevas_lineas.append((0, 0, {
                     'name': linea.name,
+                    'date': dato.fecha,
                     'debit': linea.credit,
                     'credit': linea.debit,
                     'account_id': linea.account_id.id,
@@ -99,8 +105,10 @@ class Liquidacion(models.Model):
                 }))
 
             if total != 0 and moneda_factura.id != moneda_pago.id:
+                logging.warn('2')
                 nuevas_lineas.append((0, 0, {
                     'name': 'Diferencia de ' + dato.name,
+                    'date': dato.fecha,
                     'debit': -1 * total if total < 0 else 0,
                     'credit': total if total > 0 else 0,
                     'account_id': dato.cuenta_id.id,
@@ -117,13 +125,18 @@ class Liquidacion(models.Model):
                     'date_maturity': dato.fecha,
                 }))
 
-            move = self.env['account.move'].create({
+            logging.warn('3')
+            movimiento = {
                 'line_ids': nuevas_lineas,
                 'ref': dato.name,
                 'date': dato.fecha,
                 'journal_id': dato.diario_id.id,
-            });
+            }
+            logging.warn('movimiento')
+            logging.warn(movimiento)
+            move = self.env['account.move'].create(movimiento)
             #
+            logging.warn('4')
             indice = 0
             for linea in lineas:
                 lineas_conciliar = linea | move.line_ids[indice]
