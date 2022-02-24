@@ -28,4 +28,5 @@
         'wizard/conciliacion_bancaria_wizard_views.xml',
         'data/ir_sequence_data.xml',
     ],
+    'license': 'LGPL-3',
 }
